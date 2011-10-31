@@ -1,9 +1,12 @@
+#! /usr/bin/env python
+# -*- coding: utf-8 -*-
+
 # Create your views here.
 from django.shortcuts import render
 
 def home(request):
-    return render(request, 'basic.html', {})
+    return render(request, 'keys.html', {})
     
-def cmd(request, cmd):
-    print cmd
-    return render(request, 'basic.html', {})
+def click(request, keys):
+    print keys
+    return render(request, 'keys.html', {})
