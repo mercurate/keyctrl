@@ -10,8 +10,8 @@ from django.conf.urls.defaults import patterns, include, url
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'mysite.views.home', name='home'),
-    url(r'^$', 'keys.views.home', name='home'),
-    url(r'^/keys/(?P<keys>\w+)/$', 'keys.views.click', name='click'),
+    url(r'^$', 'views.home', name='home'),
+    url(r'^/cmd/(?P<args>\w+)/$', 'views.cmd', name='cmd'),
     # url(r'^mysite/', include('mysite.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
