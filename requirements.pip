@@ -1,0 +1,8 @@
+Django
+django-auth-ldap
+South
+django-cpserver
+python-ldap
+# django-debug-toolbar
+MySQL-python
+
