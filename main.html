@@ -8,15 +8,21 @@
         </style>
         
         <script type="text/javascript">
-        function sendcmd(cmd)
+        function sendcmd(cmd, ask)
         {
+            if (ask == true)
+            {
+                r = confirm("确定?")
+                if (r == false)
+                    return
+            }
             var xmlhttp;
             xmlhttp=new XMLHttpRequest();
             var url="cmd";
             url=url+"?c="+cmd;
             xmlhttp.open("GET",url,true);
             xmlhttp.send(null);
-        }
+        }      
         </script>
     </head>
 
@@ -24,17 +30,17 @@
         <table>
             <tr>
                 <td></td>
-                <td><input type="button" value="左" onclick="sendcmd('up')" ></td>
+                <td><input type="button" value="左" onclick="sendcmd('up', false)" ></td>
                 <td></td>
             </tr>
             <tr>
-                <td><input type="button" value="左" onclick="sendcmd('left')" ></td>
-                <td></td>
-                <td><input type="button" value="右" onclick="sendcmd('right')" ></td>
+                <td><input type="button" value="左" onclick="sendcmd('left', false)" ></td>
+                <td><input type="button" value="关机" onclick="sendcmd('shutdown', true)" ></td>
+                <td><input type="button" value="右" onclick="sendcmd('right', false)" ></td>
             </tr>
             <tr>
                 <td></td>
-                <td><input type="button" value="下" onclick="sendcmd('down')" ></td>
+                <td><input type="button" value="下" onclick="sendcmd('down', false)" ></td>
                 <td></td>
             </tr>
         </table>
