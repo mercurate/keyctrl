@@ -4,7 +4,8 @@
         <title>keyctrl</title>
         
         <style type="text/css">
-            input {width: 70px; height: 70px}
+            td {width: 80px; height: 40px}
+            input {width: 100%; height: 100%}
         </style>
         
         <script type="text/javascript">
@@ -29,9 +30,9 @@
     <body>
         <table>
             <tr>
-                <td></td>
-                <td><input type="button" value="左" onclick="sendcmd('up', false)" ></td>
-                <td></td>
+                <td><input type="button" value="重启" onclick="sendcmd('left', false)" ></td>
+                <td><input type="button" value="上" onclick="sendcmd('shutdown', true)" ></td>
+                <td><input type="button" value="休眠" onclick="sendcmd('right', false)" ></td>
             </tr>
             <tr>
                 <td><input type="button" value="左" onclick="sendcmd('left', false)" ></td>
@@ -39,10 +40,10 @@
                 <td><input type="button" value="右" onclick="sendcmd('right', false)" ></td>
             </tr>
             <tr>
-                <td></td>
+                <td><input type="button" value="SPACE" onclick="sendcmd('down', false)" ></td>
                 <td><input type="button" value="下" onclick="sendcmd('down', false)" ></td>
-                <td></td>
-            </tr>
+                <td><input type="button" value="ENTER" onclick="sendcmd('down', false)" ></td>
+            </tr> 
         </table>
     </body>
     
