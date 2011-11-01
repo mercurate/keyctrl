@@ -4,7 +4,7 @@
         <title>keyctrl</title>
         
         <style type="text/css">
-            td {width: 80px; height: 40px}
+            td {width: 40px; height: 30px}
             input {width: 100%; height: 100%}
         </style>
         
@@ -30,9 +30,9 @@
     <body>
         <table>
             <tr>
-                <td><input type="button" value="重启" onclick="sendcmd('left', false)" ></td>
-                <td><input type="button" value="上" onclick="sendcmd('shutdown', true)" ></td>
-                <td><input type="button" value="休眠" onclick="sendcmd('right', false)" ></td>
+                <td><input type="button" value="重启" onclick="sendcmd('restart', false)" ></td>
+                <td><input type="button" value="上" onclick="sendcmd('up', true)" ></td>
+                <td><input type="button" value="休眠" onclick="sendcmd('sleep', false)" ></td>
             </tr>
             <tr>
                 <td><input type="button" value="左" onclick="sendcmd('left', false)" ></td>
@@ -40,9 +40,9 @@
                 <td><input type="button" value="右" onclick="sendcmd('right', false)" ></td>
             </tr>
             <tr>
-                <td><input type="button" value="SPACE" onclick="sendcmd('down', false)" ></td>
+                <td><input type="button" value="SPACE" onclick="sendcmd('space', false)" ></td>
                 <td><input type="button" value="下" onclick="sendcmd('down', false)" ></td>
-                <td><input type="button" value="ENTER" onclick="sendcmd('down', false)" ></td>
+                <td><input type="button" value="ENTER" onclick="sendcmd('enter', false)" ></td>
             </tr> 
         </table>
     </body>
