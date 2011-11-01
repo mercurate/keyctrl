@@ -9,7 +9,7 @@ import os, sys, tempfile
 from SendKeys import SendKeys
 
 KEY_MAP = {'left': '{LEFT}',
-           'right': '{ROGHT}',
+           'right': '{RIGHT}',
            'up': '{UP}',
            'down': '{DOWN}',
            'space': '{SPACE}',
