@@ -11,7 +11,7 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'mysite.views.home', name='home'),
     url(r'^$', 'views.home', name='home'),
-    url(r'^/cmd/(?P<args>\w+)/$', 'views.cmd', name='cmd'),
+    url(r'^cmd/', 'views.cmd', name='cmd'),
     # url(r'^mysite/', include('mysite.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:

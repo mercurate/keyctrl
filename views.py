@@ -6,8 +6,9 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 def home(request):
-    return render(request, 'keys.html', {})
+    return render(request, 'main.html', {})
     
-def cmd(request, args):
-    print args
-    return HttpRequest('')
+def cmd(request):
+    c = request.GET['c']
+    print c
+    return HttpResponse('')
