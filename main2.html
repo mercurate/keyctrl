@@ -1,0 +1,56 @@
+<html>
+
+    <head>
+        <title>keyctrl</title>
+        
+        <style type="text/css">
+            td {width: 200px; height: 100px}
+            input {width: 100%; height: 100%}
+        </style>
+        
+        <script type="text/javascript">
+        function key(code)
+        {
+            var xmlhttp;
+            xmlhttp=new XMLHttpRequest();
+            var url="cmd";
+            url=url+"?c="+code;
+            xmlhttp.open("GET",url,true);
+            xmlhttp.send(null);
+        }      
+        </script>
+    </head>
+
+    <body>
+        <ul>
+            <li><input type="button" value="F1" onclick="key('F1')" ></li>
+            <li><input type="button" value="F2" onclick="key('F2')" ></li>
+            <li><input type="button" value="F3" onclick="key('F3')" ></li>
+            <li><input type="button" value="F4" onclick="key('F4')" ></li>
+            <li><input type="button" value="F5" onclick="key('F5')" ></li>
+            <li><input type="button" value="F6" onclick="key('F6')" ></li>
+            <li><input type="button" value="F7" onclick="key('F7')" ></li>
+            <li><input type="button" value="F8" onclick="key('F8')" ></li>
+            <li><input type="button" value="F9" onclick="key('F9')" ></li>
+            <li><input type="button" value="F0" onclick="key('F0')" ></li>
+        </ol>
+        <table>
+            <tr>
+                <td><input type="button" value="重启" onclick="sendcmd('restart', true)" ></td>
+                <td><input type="button" value="上" onclick="sendcmd('up', false)" ></td>
+                <td><input type="button" value="休眠" onclick="sendcmd('sleep', true)" ></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="左" onclick="sendcmd('left', false)" ></td>
+                <td><input type="button" value="关机" onclick="sendcmd('shutdown', true)" ></td>
+                <td><input type="button" value="右" onclick="sendcmd('right', false)" ></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="SPACE" onclick="sendcmd('space', false)" ></td>
+                <td><input type="button" value="下" onclick="sendcmd('down', false)" ></td>
+                <td><input type="button" value="ENTER" onclick="sendcmd('enter', false)" ></td>
+            </tr> 
+        </table>
+    </body>
+    
+</html>
