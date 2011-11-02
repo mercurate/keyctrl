@@ -4,26 +4,37 @@
         <title>keyctrl</title>
         
         <style type="text/css">
-            td {width: 200px; height: 100px}
+            table {border: 1;}
+            td {width: 8em; height: 4em;}
+            .half td {width: 4em; height: 2em;}
             input {width: 100%; height: 100%}
+            input[type="checkbox"] {width: 50%; height: 100%}
         </style>
         
         <script type="text/javascript">
-        function key(code)
+        function send(p, k)
         {
-            var xmlhttp;
-            xmlhttp=new XMLHttpRequest();
-            var url="cmd";
-            url=url+"?c="+code;
-            xmlhttp.open("GET",url,true);
+            var xmlhttp=new XMLHttpRequest();
+            xmlhttp.open("GET",p+"?k="+k,true);
             xmlhttp.send(null);
-        }   
-        function cmd(code, ask)
+        }
+        
+        function key(k)
+        {
+            send("key", k)
+        }
+        
+        function cmd(k)
+        {
+            send("cmd", k)
+        }
+        
+        function cmd2(k)
         {
             var xmlhttp;
             xmlhttp=new XMLHttpRequest();
             var url="cmd";
-            url=url+"?c="+code;
+            url=url+"?k="+k;
             xmlhttp.open("GET",url,true);
             xmlhttp.send(null);
         }  
@@ -31,7 +42,7 @@
     </head>
 
     <body>
-        <table border=1>
+        <table>
             {% for r in Fn %}
             <tr>
                 {% for n in r %}
@@ -42,45 +53,45 @@
         </table>
         
         
-        <table border=1>
+        <table>
             <tr>
                 <td></td>
-                <td><input type="button" value="上" onclick="key('up', false)" ></td>
+                <td><input type="button" value="上" onclick="key('{UP}')" ></td>
                 <td></td>
             </tr>
             <tr>
-                <td><input type="button" value="左" onclick="key('left')" ></td>
-                <td><input type="button" value="下" onclick="key('down')" ></td>
-                <td><input type="button" value="右" onclick="key('right')" ></td>
+                <td><input type="button" value="左" onclick="key('{LEFT}')" ></td>
+                <td><input type="button" value="下" onclick="key('{DOWN}')" ></td>
+                <td><input type="button" value="右" onclick="key('{RIGHT}')" ></td>
             </tr>
         </table>
         
-        <table border=1>
+        <table class="half">
             <tr>
-                <td><input type="checkbox" value="Ctrl"  onclick="key('{CTRL}')"  ></td>
-                <td><input type="checkbox" value="Alt"   onclick="key('{ALT}')"   ></td>
-                <td><input type="checkbox" value="Shift" onclick="key('{SHIFT}')" ></td>
+                <td><input type="checkbox" class="checkbox"></td><td>Ctrl</td>
+                <td><input type="checkbox" class="checkbox"></td><td>Alt</td>
+                <td><input type="checkbox" class="checkbox"></td><td>Shift</td>
             </tr>
         </table>        
 
-        <table border=1>
+        <table>
             <tr>
-                <td><input type="button" value="Win" onclick="key('up')" ></td>
-                <td><input type="button" value="Esc" onclick="key('up')" ></td>
-                <td><input type="button" value="BackSapce" onclick="key('up')" ></td>
+                <td><input type="button" value="Win" onclick="key('{LWIN}')" ></td>
+                <td><input type="button" value="Esc" onclick="key('{ESC}')" ></td>
+                <td><input type="button" value="BackSapce" onclick="key('{BACKSPACE}')" ></td>
             </tr>
             <tr>
-                <td><input type="button" value="Tab" onclick="key('left')" ></td>
-                <td><input type="button" value="Space" onclick="key('down')" ></td>
-                <td><input type="button" value="Enter" onclick="key('right')" ></td>
+                <td><input type="button" value="Tab" onclick="key('{TAB}')" ></td>
+                <td><input type="button" value="Space" onclick="key('{SPACE}')" ></td>
+                <td><input type="button" value="Enter" onclick="key('{ENTER}')" ></td>
             </tr>
         </table>
         
-        <table border=1>
+        <table>
             <tr>
-                <td><input type="button" value="重启" onclick="key('{LWIN}rur{CTRL}')" ></td>
-                <td><input type="button" value="关机" onclick="key('{LWIN}ruu{CTRL}"   ></td>
-                <td><input type="button" value="休眠" onclick="key('{LWIN}rus{CTRL}"   ></td>
+                <td><input type="button" value="待机" onclick="cmd('standby')" ></td>
+                <td><input type="button" value="关机" onclick="cmd('shutdown')" ></td>
+                <td><input type="button" value="重启" onclick="cmd('restart')" ></td>
             </tr>
         </table>
         
