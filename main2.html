@@ -12,32 +12,41 @@
         </style>
         
         <script type="text/javascript">
-        function send(p, k)
+        //通用的发送函数，发送数组参数到指定的路径
+        function send(path, args)
         {
             var xmlhttp=new XMLHttpRequest();
-            xmlhttp.open("GET",p+"?k="+k,true);
+            var str = "";
+            for (k in args)
+            {
+                if (str)
+                    str = str + "&";
+                str = str + k + "=" + args[k];
+            }
+            xmlhttp.open("GET",path+"?"+str,true);
             xmlhttp.send(null);
+        }        
+
+        function sendkey(key)
+        {
+            ctrl  = document.getElementById("id_ctrl").checked;
+            alt   = document.getElementById("id_alt").checked;
+            shift = document.getElementById("id_shift").checked;
+            var args = new Array();
+            args["key"] = key;
+            args["ctrl"] = ctrl;
+            args["alt"] = alt;
+            args["shift"] = shift;
+            send("key", args)
         }
         
-        function key(k)
+        function sendcmd(cmd)
         {
-            send("key", k)
+            var args = new Array()
+            args["cmd"] = cmd
+            send("cmd", args)
         }
-        
-        function cmd(k)
-        {
-            send("cmd", k)
-        }
-        
-        function cmd2(k)
-        {
-            var xmlhttp;
-            xmlhttp=new XMLHttpRequest();
-            var url="cmd";
-            url=url+"?k="+k;
-            xmlhttp.open("GET",url,true);
-            xmlhttp.send(null);
-        }  
+
         </script>
     </head>
 
@@ -46,7 +55,7 @@
             {% for r in Fn %}
             <tr>
                 {% for n in r %}
-                <td><input type="button" value="F{{n}}" onclick="key('{F{{n}}}')" ></td>
+                <td><input type="button" value="F{{n}}" onclick="sendkey('F{{n}}')" ></td>
                 {% endfor %}
             </tr>
             {% endfor %}
@@ -56,42 +65,42 @@
         <table>
             <tr>
                 <td></td>
-                <td><input type="button" value="上" onclick="key('{UP}')" ></td>
+                <td><input type="button" value="上" onclick="sendkey('UP')" ></td>
                 <td></td>
             </tr>
             <tr>
-                <td><input type="button" value="左" onclick="key('{LEFT}')" ></td>
-                <td><input type="button" value="下" onclick="key('{DOWN}')" ></td>
-                <td><input type="button" value="右" onclick="key('{RIGHT}')" ></td>
+                <td><input type="button" value="左" onclick="sendkey('LEFT')" ></td>
+                <td><input type="button" value="下" onclick="sendkey('DOWN')" ></td>
+                <td><input type="button" value="右" onclick="sendkey('RIGHT')" ></td>
             </tr>
         </table>
         
         <table class="half">
             <tr>
-                <td><input type="checkbox" class="checkbox"></td><td>Ctrl</td>
-                <td><input type="checkbox" class="checkbox"></td><td>Alt</td>
-                <td><input type="checkbox" class="checkbox"></td><td>Shift</td>
+                <td><input type="checkbox" class="checkbox" id="id_ctrl"></td><td>Ctrl</td>
+                <td><input type="checkbox" class="checkbox" id="id_alt"></td><td>Alt</td>
+                <td><input type="checkbox" class="checkbox" id="id_shift"></td><td>Shift</td>
             </tr>
         </table>        
 
         <table>
             <tr>
-                <td><input type="button" value="Win" onclick="key('{LWIN}')" ></td>
-                <td><input type="button" value="Esc" onclick="key('{ESC}')" ></td>
-                <td><input type="button" value="BackSapce" onclick="key('{BACKSPACE}')" ></td>
+                <td><input type="button" value="Esc" onclick="sendkey('ESC')" ></td>
+                <td><input type="button" value="Win" onclick="sendkey('LWIN')" ></td>
+                <td><input type="button" value="BackSapce" onclick="sendkey('BACKSPACE')" ></td>
             </tr>
             <tr>
-                <td><input type="button" value="Tab" onclick="key('{TAB}')" ></td>
-                <td><input type="button" value="Space" onclick="key('{SPACE}')" ></td>
-                <td><input type="button" value="Enter" onclick="key('{ENTER}')" ></td>
+                <td><input type="button" value="Tab" onclick="sendkey('TAB')" ></td>
+                <td><input type="button" value="Space" onclick="sendkey('SPACE')" ></td>
+                <td><input type="button" value="Enter" onclick="sendkey('ENTER')" ></td>
             </tr>
         </table>
         
         <table>
             <tr>
-                <td><input type="button" value="待机" onclick="cmd('standby')" ></td>
-                <td><input type="button" value="关机" onclick="cmd('shutdown')" ></td>
-                <td><input type="button" value="重启" onclick="cmd('restart')" ></td>
+                <td><input type="button" value="待机" onclick="sendcmd('standby')" ></td>
+                <td><input type="button" value="关机" onclick="sendcmd('shutdown')" ></td>
+                <td><input type="button" value="重启" onclick="sendcmd('restart')" ></td>
             </tr>
         </table>
         
