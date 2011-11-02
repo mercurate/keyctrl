@@ -16,7 +16,7 @@ CMD_MAP = {
 
 def home(request):
     Fn = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]]
-    return render(request, 'main2.html', {'Fn': Fn})
+    return render(request, 'keys.html', {'Fn': Fn})
     
 def key(request):
     try:
