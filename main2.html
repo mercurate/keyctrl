@@ -17,40 +17,73 @@
             url=url+"?c="+code;
             xmlhttp.open("GET",url,true);
             xmlhttp.send(null);
-        }      
+        }   
+        function cmd(code, ask)
+        {
+            var xmlhttp;
+            xmlhttp=new XMLHttpRequest();
+            var url="cmd";
+            url=url+"?c="+code;
+            xmlhttp.open("GET",url,true);
+            xmlhttp.send(null);
+        }  
         </script>
     </head>
 
     <body>
-        <ul>
-            <li><input type="button" value="F1" onclick="key('F1')" ></li>
-            <li><input type="button" value="F2" onclick="key('F2')" ></li>
-            <li><input type="button" value="F3" onclick="key('F3')" ></li>
-            <li><input type="button" value="F4" onclick="key('F4')" ></li>
-            <li><input type="button" value="F5" onclick="key('F5')" ></li>
-            <li><input type="button" value="F6" onclick="key('F6')" ></li>
-            <li><input type="button" value="F7" onclick="key('F7')" ></li>
-            <li><input type="button" value="F8" onclick="key('F8')" ></li>
-            <li><input type="button" value="F9" onclick="key('F9')" ></li>
-            <li><input type="button" value="F0" onclick="key('F0')" ></li>
-        </ol>
-        <table>
+        <table border=1>
+            {% for r in Fn %}
             <tr>
-                <td><input type="button" value="重启" onclick="sendcmd('restart', true)" ></td>
-                <td><input type="button" value="上" onclick="sendcmd('up', false)" ></td>
-                <td><input type="button" value="休眠" onclick="sendcmd('sleep', true)" ></td>
+                {% for n in r %}
+                <td><input type="button" value="F{{n}}" onclick="key('{F{{n}}}')" ></td>
+                {% endfor %}
             </tr>
-            <tr>
-                <td><input type="button" value="左" onclick="sendcmd('left', false)" ></td>
-                <td><input type="button" value="关机" onclick="sendcmd('shutdown', true)" ></td>
-                <td><input type="button" value="右" onclick="sendcmd('right', false)" ></td>
-            </tr>
-            <tr>
-                <td><input type="button" value="SPACE" onclick="sendcmd('space', false)" ></td>
-                <td><input type="button" value="下" onclick="sendcmd('down', false)" ></td>
-                <td><input type="button" value="ENTER" onclick="sendcmd('enter', false)" ></td>
-            </tr> 
+            {% endfor %}
         </table>
+        
+        
+        <table border=1>
+            <tr>
+                <td></td>
+                <td><input type="button" value="上" onclick="key('up', false)" ></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="左" onclick="key('left')" ></td>
+                <td><input type="button" value="下" onclick="key('down')" ></td>
+                <td><input type="button" value="右" onclick="key('right')" ></td>
+            </tr>
+        </table>
+        
+        <table border=1>
+            <tr>
+                <td><input type="checkbox" value="Ctrl"  onclick="key('{CTRL}')"  ></td>
+                <td><input type="checkbox" value="Alt"   onclick="key('{ALT}')"   ></td>
+                <td><input type="checkbox" value="Shift" onclick="key('{SHIFT}')" ></td>
+            </tr>
+        </table>        
+
+        <table border=1>
+            <tr>
+                <td><input type="button" value="Win" onclick="key('up')" ></td>
+                <td><input type="button" value="Esc" onclick="key('up')" ></td>
+                <td><input type="button" value="BackSapce" onclick="key('up')" ></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="Tab" onclick="key('left')" ></td>
+                <td><input type="button" value="Space" onclick="key('down')" ></td>
+                <td><input type="button" value="Enter" onclick="key('right')" ></td>
+            </tr>
+        </table>
+        
+        <table border=1>
+            <tr>
+                <td><input type="button" value="重启" onclick="key('{LWIN}rur{CTRL}')" ></td>
+                <td><input type="button" value="关机" onclick="key('{LWIN}ruu{CTRL}"   ></td>
+                <td><input type="button" value="休眠" onclick="key('{LWIN}rus{CTRL}"   ></td>
+            </tr>
+        </table>
+        
     </body>
     
 </html>
