@@ -42,6 +42,9 @@
         
         function sendcmd(cmd)
         {
+            r = confirm("确定?")
+            if !r
+                return
             var args = new Array()
             args["cmd"] = cmd
             send("cmd", args)
@@ -51,17 +54,6 @@
     </head>
 
     <body>
-        <table>
-            {% for r in Fn %}
-            <tr>
-                {% for n in r %}
-                <td><input type="button" value="F{{n}}" onclick="sendkey('F{{n}}')" ></td>
-                {% endfor %}
-            </tr>
-            {% endfor %}
-        </table>
-        
-        
         <table>
             <tr>
                 <td></td>
@@ -103,6 +95,16 @@
                 <td><input type="button" value="重启" onclick="sendcmd('restart')" ></td>
             </tr>
         </table>
+
+        <table>
+            {% for r in Fn %}
+            <tr>
+                {% for n in r %}
+                <td><input type="button" value="F{{n}}" onclick="sendkey('F{{n}}')" ></td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>        
         
     </body>
     
