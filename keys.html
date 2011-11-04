@@ -7,6 +7,8 @@
             table {border: 1;}
             td {width: 8em; height: 4em;}
             .half td {width: 4em; height: 2em;}
+            select {width: 100%; height: 100%}
+            option {width: 100%; height: 100%; font-size: 100%}
             input {width: 100%; height: 100%}
             input[type="checkbox"] {width: 50%; height: 100%}
         </style>
@@ -43,12 +45,18 @@
         function sendcmd(cmd)
         {
             r = confirm("确定?")
-            if !r
+            if (r == false)
                 return
             var args = new Array()
             args["cmd"] = cmd
             send("cmd", args)
         }
+        
+        function sendselected(id)
+        {
+            key = document.getElementById(id).value
+            sendkey(key)
+        }        
 
         </script>
     </head>
@@ -77,6 +85,32 @@
 
         <table>
             <tr>
+                <td>
+                    <select id="id_fn">
+                        {% for n in N %}
+                        <option {% if forloop.first %}selected{% endif %}>F{{n}}</option>
+                        {% endfor %}            
+                    </select>
+                </td>
+                <td><input type="button" value="OK" onclick="sendselected('id_fn')" ></td>
+            </tr>
+        </table>        
+
+        <table>
+            <tr>
+                <td>
+                    <select id="id_letter">
+                        {% for a in A %}
+                        <option {% if forloop.first %}selected{% endif %}>{{a}}</option>
+                        {% endfor %}            
+                    </select>
+                </td>
+                <td><input type="button" value="OK" onclick="sendselected('id_letter')" ></td>
+            </tr>
+        </table>         
+        
+        <table>
+            <tr>
                 <td><input type="button" value="Esc" onclick="sendkey('ESC')" ></td>
                 <td><input type="button" value="Win" onclick="sendkey('LWIN')" ></td>
                 <td><input type="button" value="BackSapce" onclick="sendkey('BACKSPACE')" ></td>
@@ -94,17 +128,7 @@
                 <td><input type="button" value="关机" onclick="sendcmd('shutdown')" ></td>
                 <td><input type="button" value="重启" onclick="sendcmd('restart')" ></td>
             </tr>
-        </table>
-
-        <table>
-            {% for r in Fn %}
-            <tr>
-                {% for n in r %}
-                <td><input type="button" value="F{{n}}" onclick="sendkey('F{{n}}')" ></td>
-                {% endfor %}
-            </tr>
-            {% endfor %}
-        </table>        
+        </table>         
         
     </body>
     
